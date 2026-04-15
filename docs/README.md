@@ -29,6 +29,8 @@ The following CSI interfaces are implemented:
 
 > **Note** When using static provisioning with an Amazon S3 file system, the `volumeHandle` in your PersistentVolume must include the `s3files:` prefix (e.g., `s3files:fs-01234567890abcdef0`).
 
+> **Note** Do not install `amazon-efs-utils` directly on EKS worker nodes. The EFS CSI driver already packages `efs-utils` within its containers and manages the mount process. Installing `efs-utils` at the node level can cause unexpected mount behavior.
+
 > **Note** Amazon EFS and S3 Files are fully elastic and scalable file systems which automatically scale up or down based on usage, so there is no need to manage capacity. The actual storage capacity value in persistent volume and persistent volume claim is a placeholder value that must be specified (required by Kubernetes) but is not actually used. You can specify any valid value for the capacity.
 
 For detailed parameter explanations, see the [parameters documentation](parameters.md).
